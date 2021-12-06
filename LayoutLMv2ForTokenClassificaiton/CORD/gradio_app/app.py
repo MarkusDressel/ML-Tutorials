@@ -1,14 +1,4 @@
 import os
-# os.system('pip install gradio --upgrade')
-# os.system('pip install git+https://github.com/huggingface/transformers.git --upgrade')
-# os.system('pip install pyyaml==5.1')
-# # workaround: install old version of pytorch since detectron2 hasn't released packages for pytorch 1.9 (issue: https://github.com/facebookresearch/detectron2/issues/3158)
-# os.system('pip install torch==1.8.0+cu101 torchvision==0.9.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html')
-# # install detectron2 that matches pytorch 1.8
-# # See https://detectron2.readthedocs.io/tutorials/install.html for instructions
-# os.system('pip install -q detectron2 -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu101/torch1.8/index.html')
-# ## install PyTesseract
-os.system('pip install -q pytesseract')
 import gradio as gr
 import numpy as np
 from transformers import LayoutLMv2Processor, LayoutLMv2ForTokenClassification
@@ -41,7 +31,7 @@ def unnormalize_box(bbox, width, height):
 def iob_to_label(label):
     label = label[2:]
     if not label:
-      return 'other'
+        return 'other'
     return label
 
 

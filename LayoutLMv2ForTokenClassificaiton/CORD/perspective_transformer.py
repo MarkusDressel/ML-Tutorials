@@ -7,17 +7,26 @@ import json
 import numpy as np
 
 
-def keypoint_scale(keypoint: Sequence[float], scale_x: float, scale_y: float):
-    """Scales a keypoint by scale_x and scale_y.
-    Args:
-        keypoint (tuple): A keypoint `(x, y, angle, scale)`.
-        scale_x: Scale coefficient x-axis.
-        scale_y: Scale coefficient y-axis.
-    Returns:
-        A keypoint `(x, y, angle, scale)`.
-    """
-    x, y, angle, scale = keypoint[:4]
-    return x * scale_x, y * scale_y, angle, scale * max(scale_x, scale_y)
+def keypoint_scale(keypoint: Sequence[float], scale_x: float, scale_y: float)->Sequence[float]:
+	"""
+	Scales a keypoint by scale_x and scale_y.
+    
+	Parameters
+	----------
+	keypoint : Sequence[float]
+		A keypoint `(x, y, angle, scale)`.
+	scale_x : float
+		Scale coefficient x-axis.
+	scale_y : float
+		Scale coefficient y-axis.
+
+	Returns
+	-------
+		A keypoint `(x, y, angle, scale)`.
+	"""
+
+	x, y, angle, scale = keypoint[:4]
+	return x * scale_x, y * scale_y, angle, scale * max(scale_x, scale_y)
 
 def rotation2DMatrixToEulerAngles(matrix: np.ndarray):
     return np.arctan2(matrix[1, 0], matrix[0, 0])
